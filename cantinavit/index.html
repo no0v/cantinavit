@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cantina</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Cantina</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Produtos</h2>
+            <ul>
+                <li>
+                    <img src="img/coxinha.jpg" alt="Coxinha">
+                    <p>Coxinha</p>
+                    <p class="price">R$ 3,00</p>
+                    <button class="add-to-cart" data-price="3.00">Adicionar ao Carrinho</button>
+                </li>
+                <li>
+                    <img src="img/pastel.jpg"Pastel">
+                    <p>Pastel</p>
+                    <p class="price">R$ 2,50</p>
+                    <button class="add-to-cart" data-price="2.50">Adicionar ao Carrinho</button>
+                </li>
+                <li>
+                    <img src="img/empada.jpg" alt="Empada">
+                    <p>Empada</p>
+                    <p class="price">R$ 2,00</p>
+                    <button class="add-to-cart" data-price="2.00">Adicionar ao Carrinho</button>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>Carrinho de Compras</h2>
+            <ul id="cart">
+                <li>Nenhum item no carrinho</li>
+            </ul>
+            <p>Total: <span id="total">R$ 0,00</span></p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script src="carrinho.js"></script>
+</body>
+</html>
