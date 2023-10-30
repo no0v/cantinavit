@@ -1,38 +1,25 @@
-let carrinho = [];
-let total = 0;
+// Carrinho de compras
+const cart = document.getElementById('cart');
+const totalElement = document.getElementById('total');
 
-function adicionarProduto(preco) {
-    carrinho.push(preco);
-    atualizarCarrinho();
+// Função para adicionar um item ao carrinho
+function addToCart(productName, productPrice) {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${productName} - ${productPrice} reais`;
+    cart.appendChild(listItem);
+
+    // Atualizar o total
+    const currentTotal = parseFloat(totalElement.textContent.replace('R$', '').trim());
+    const newTotal = currentTotal + parseFloat(productPrice);
+    totalElement.textContent = `R$ ${newTotal.toFixed(2)}`;
 }
 
-
-function atualizarCarrinho() {
-    let listaCarrinho = document.getElementById("cart");
-    listaCarrinho.innerHTML = "";
-
-    if (carrinho.length === 0) {
-        listaCarrinho.innerHTML = "<li>Nenhum item no carrinho</li>";
-    } else {
-        carrinho.forEach(function (preco) {
-            let item = document.createElement("li");
-            item.innerText = `R$ ${preco.toFixed(2)}`;
-            listaCarrinho.appendChild(item);
-        });
-    }
-
-    total = carrinho.reduce(function (acumulador, preco) {
-        return acumulador + preco;
-    }, 0);
-
-    document.getElementById("total").innerText = `Total: R$ ${total.toFixed(2)}`;
-}
-
-// Adicionar evento de clique para os botões "Adicionar ao Carrinho"
-let botoesAdicionar = document.querySelectorAll(".add-to-cart");
-botoesAdicionar.forEach(function (botao) {
-    botao.addEventListener("click", function () {
-        let preco = parseFloat(botao.getAttribute("data-price"));
-        adicionarProduto(preco);
+// Adicionar eventos de clique aos botões "Adicionar ao Carrinho"
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const productName = this.getAttribute('data-name'); // Obter o nome do produto
+        const productPrice = this.getAttribute('data-price'); // Obter o preço do produto
+        addToCart(productName, productPrice);
     });
 });
